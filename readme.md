@@ -7,8 +7,8 @@ How to run the Application:
 Follow these steps to set up and run the application locally:
 
 Clone the repository:
-git clone https://github.com/yourusername/twitter-backend.git
-cd twitter-backend
+git clone https://github.com/megha-js/Healthflex-Twitter-backend-Assignment.git
+
 
 Install dependencies:
 npm install
@@ -43,8 +43,8 @@ Install MongoDB:
 Download and install MongoDB from the official website: MongoDB
 
 Clone the repository:
-git clone https://github.com/yourusername/twitter-backend.git
-cd twitter-backend
+git clone https://github.com/megha-js/Healthflex-Twitter-backend-Assignment.git
+
 
 Install project dependencies:
 npm install
@@ -55,15 +55,6 @@ Create a .env file in the root directory and include the following variables:
 PORT=5000
 MONGODB_URI=mongodb://127.0.0.1:27017/healthflexTwitter
 JWT_SECRET=234957681238
-
-Testing:
-To run tests and ensure the application's correctness:
-
-Set up the test environment:
-Ensure that you have the necessary test configuration in your .env file.
-
-Run the tests
-npm test
 
 Issues and Troubleshooting:
 Common issues users might encounter and how to troubleshoot them:
@@ -80,4 +71,4 @@ Ensure that the JWT_SECRET in the .env file matches the secret used for generati
 Contact Information:
 
 Meghadarshini S - meghadarshini.02@gmail.com
-Project Link - https://github.com/yourusername/yourproject
+Project Link - https://github.com/megha-js/Healthflex-Twitter-backend-Assignment
