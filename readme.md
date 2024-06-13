@@ -72,3 +72,108 @@ Contact Information:
 
 Meghadarshini S - meghadarshini.02@gmail.com
 Project Link - https://github.com/megha-js/Healthflex-Twitter-backend-Assignment
+
+API Documentation
+
+User API - 
+Method: POST 127.0.0.1:5000/api/users/register
+
+Request Body:
+{
+    "username":"manoj",
+    "password":"Manoj@12345"
+}
+
+Response Body:
+{
+    "username": "manoj",
+    "password": "$2a$08$yTk6ZBT21BAnn7sJzAare.C.Ze5HEqPQ7ortmorh7dQ01kZoW9Tv2",
+    "_id": "6669e6fb903ded42c944bffb",
+    "createdAt": "2024-06-12T18:20:43.308Z",
+    "updatedAt": "2024-06-12T18:20:43.308Z",
+    "__v": 0
+}
+
+Description: This method POST creates a new user to register.
+
+Method: POST 127.0.0.1:5000/api/users/login
+
+Request Body:
+{
+    "username":"manoj",
+    "password":"Manoj@12345"
+}
+
+Response Body:
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjY5ZTZmYjkwM2RlZDQyYzk0NGJmZmIiLCJpYXQiOjE3MTgyMTY2MTUsImV4cCI6MTcxODIyMDIxNX0.tC4EUKN6sM8ZcHfxpgaOJa_OIPGagORfXFe7CEy93Uc"
+}
+
+Description: This method creates a user to login using the username and password.
+
+Method: GET 127.0.0.1:5000/api/users/
+
+Authorization:
+Bearer Token - eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjY5ZTExZDkwM2RlZDQyYzk0NGJmZjMiLCJpYXQiOjE3MTgyMTUxNDQsImV4cCI6MTcxODIxODc0NH0.Dtnb6zxeY6W3GIe-XPeXPMFAgrxTOJimgWkNRIQ71Bs
+
+Response Body:
+[
+    {
+        "_id": "6669e11d903ded42c944bff3",
+        "username": "megha",
+        "password": "$2a$08$tkdh2EKIrt0WlWmb1HOa7ejPy.z./E/rq25OpPYvCWuuoxpiuylXK",
+        "createdAt": "2024-06-12T17:55:41.599Z",
+        "updatedAt": "2024-06-12T17:55:41.599Z",
+        "__v": 0
+    },
+    {
+        "_id": "6669e6fb903ded42c944bffb",
+        "username": "manoj",
+        "password": "$2a$08$yTk6ZBT21BAnn7sJzAare.C.Ze5HEqPQ7ortmorh7dQ01kZoW9Tv2",
+        "createdAt": "2024-06-12T18:20:43.308Z",
+        "updatedAt": "2024-06-12T18:20:43.308Z",
+        "__v": 0
+    }
+
+Description: This method fetches all the user details.
+
+Tweet API - 
+Method: POST 127.0.0.1:5000/api/tweets/
+
+Request Body:
+{
+    "userId":"6669e6fb903ded42c944bffb",
+    "text":"Hope this day brings you joy and good news",
+    "createdAt":"2024-06-11"
+}
+
+Authorization:
+Bearer Token - eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjY5ZTExZDkwM2RlZDQyYzk0NGJmZjMiLCJpYXQiOjE3MTgyMTUxNDQsImV4cCI6MTcxODIxODc0NH0.Dtnb6zxeY6W3GIe-XPeXPMFAgrxTOJimgWkNRIQ71Bs
+
+Response Body:
+{
+    "userId": "6669e6fb903ded42c944bffb",
+    "text": "Hope this day brings you joy and good news",
+    "_id": "6669e7c1903ded42c944c000",
+    "createdAt": "2024-06-12T18:24:01.140Z",
+    "__v": 0
+}
+
+Description: This method creates a new tweet using the userId of the user.
+
+Method: GET 127.0.0.1:5000/api/tweets/6669e6fb903ded42c944bffb/timeline
+
+Authorization:
+Bearer Token - eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjY5ZTExZDkwM2RlZDQyYzk0NGJmZjMiLCJpYXQiOjE3MTgyMTUxNDQsImV4cCI6MTcxODIxODc0NH0.Dtnb6zxeY6W3GIe-XPeXPMFAgrxTOJimgWkNRIQ71Bs
+
+Response Body:
+[
+    {
+        "_id": "6669e7c1903ded42c944c000",
+        "userId": "6669e6fb903ded42c944bffb",
+        "text": "Hope this day brings you joy and good news",
+        "createdAt": "2024-06-12T18:24:01.140Z",
+        "__v": 0
+    }
+
+Description: This method fetches all the details of the tweets along with the timeline.
