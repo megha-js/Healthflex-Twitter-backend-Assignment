@@ -73,20 +73,26 @@ Contact Information:
 Meghadarshini S - meghadarshini.02@gmail.com
 Project Link - https://github.com/megha-js/Healthflex-Twitter-backend-Assignment
 
-API Documentation
+API Documentation: 
+This API Documentation outlines the endpoints and usage of the Healthflex Twitter Backend.
+Base URL - All endpoints are relative to the base URL: /api
+Authentication - Some endpoints require authentication via bearer token in the Authorization header.
+Endpoints - 
 
-User API - 
-Method: POST 127.0.0.1:5000/api/users/register
+User API 
 
-Request Body:
+User Registration: 
+- `POST /api/users/register`
+
+Request Body: json
 {
-    "username":"manoj",
-    "password":"Manoj@12345"
+    "username":"megha",
+    "password":"Megha@123"
 }
 
-Response Body:
+Response Body:json
 {
-    "username": "manoj",
+    "username": "megha",
     "password": "$2a$08$yTk6ZBT21BAnn7sJzAare.C.Ze5HEqPQ7ortmorh7dQ01kZoW9Tv2",
     "_id": "6669e6fb903ded42c944bffb",
     "createdAt": "2024-06-12T18:20:43.308Z",
@@ -94,33 +100,44 @@ Response Body:
     "__v": 0
 }
 
-Description: This method POST creates a new user to register.
+Response: 201 Created
+Content: User Objects
 
-Method: POST 127.0.0.1:5000/api/users/login
+Description: Registers a new user with provided username and password.
 
-Request Body:
+User Login:
+- `POST /api/users/login`
+
+Request Body: json
 {
-    "username":"manoj",
-    "password":"Manoj@12345"
+    "username":"megha",
+    "password":"Megha@123"
 }
 
-Response Body:
+Response Body: json
 {
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjY5ZTZmYjkwM2RlZDQyYzk0NGJmZmIiLCJpYXQiOjE3MTgyMTY2MTUsImV4cCI6MTcxODIyMDIxNX0.tC4EUKN6sM8ZcHfxpgaOJa_OIPGagORfXFe7CEy93Uc"
 }
 
-Description: This method creates a user to login using the username and password.
+Response: 200 OK
+Content: Token Object
 
-Method: GET 127.0.0.1:5000/api/users/
+Error Message: 404 NOT FOUND
+Content: Error Message indicating user not found.
 
-Authorization:
+Description: Logs in an existing user with the provided username and password, then returns an authentication token.
+
+Get All Users:
+-` GET /api/users/`
+
+Authorization: 
 Bearer Token - eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjY5ZTExZDkwM2RlZDQyYzk0NGJmZjMiLCJpYXQiOjE3MTgyMTUxNDQsImV4cCI6MTcxODIxODc0NH0.Dtnb6zxeY6W3GIe-XPeXPMFAgrxTOJimgWkNRIQ71Bs
 
-Response Body:
+Response Body: json
 [
     {
         "_id": "6669e11d903ded42c944bff3",
-        "username": "megha",
+        "username": "meghadarshini",
         "password": "$2a$08$tkdh2EKIrt0WlWmb1HOa7ejPy.z./E/rq25OpPYvCWuuoxpiuylXK",
         "createdAt": "2024-06-12T17:55:41.599Z",
         "updatedAt": "2024-06-12T17:55:41.599Z",
@@ -128,19 +145,24 @@ Response Body:
     },
     {
         "_id": "6669e6fb903ded42c944bffb",
-        "username": "manoj",
+        "username": "megha",
         "password": "$2a$08$yTk6ZBT21BAnn7sJzAare.C.Ze5HEqPQ7ortmorh7dQ01kZoW9Tv2",
         "createdAt": "2024-06-12T18:20:43.308Z",
         "updatedAt": "2024-06-12T18:20:43.308Z",
         "__v": 0
     }
 
-Description: This method fetches all the user details.
+Response: 200 OK
+Content: Array of User Objects.
+
+Description: Retrieves a list of all users.
 
 Tweet API - 
-Method: POST 127.0.0.1:5000/api/tweets/
 
-Request Body:
+Post a Tweet:
+- `POST /api/tweets/`
+
+Request Body: json
 {
     "userId":"6669e6fb903ded42c944bffb",
     "text":"Hope this day brings you joy and good news",
@@ -150,7 +172,7 @@ Request Body:
 Authorization:
 Bearer Token - eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjY5ZTExZDkwM2RlZDQyYzk0NGJmZjMiLCJpYXQiOjE3MTgyMTUxNDQsImV4cCI6MTcxODIxODc0NH0.Dtnb6zxeY6W3GIe-XPeXPMFAgrxTOJimgWkNRIQ71Bs
 
-Response Body:
+Response Body: json
 {
     "userId": "6669e6fb903ded42c944bffb",
     "text": "Hope this day brings you joy and good news",
@@ -159,14 +181,23 @@ Response Body:
     "__v": 0
 }
 
-Description: This method creates a new tweet using the userId of the user.
+Request Header: Authorization - Bearer Token
 
-Method: GET 127.0.0.1:5000/api/tweets/6669e6fb903ded42c944bffb/timeline
+Response: 200 OK
+Content: Tweet Object
+
+Error Message: 404 NOT FOUND
+Content:Error Message indicating tweet creation failed.
+
+Description: Creates a new tweet for the authenticated user.
+
+Fetch User Timeline:
+- `GET /api/tweets/6669e6fb903ded42c944bffb/timeline`
 
 Authorization:
 Bearer Token - eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjY5ZTExZDkwM2RlZDQyYzk0NGJmZjMiLCJpYXQiOjE3MTgyMTUxNDQsImV4cCI6MTcxODIxODc0NH0.Dtnb6zxeY6W3GIe-XPeXPMFAgrxTOJimgWkNRIQ71Bs
 
-Response Body:
+Response Body: json
 [
     {
         "_id": "6669e7c1903ded42c944c000",
@@ -176,4 +207,46 @@ Response Body:
         "__v": 0
     }
 
-Description: This method fetches all the details of the tweets along with the timeline.
+Path Parameter: 
+-userId: string (User ID)
+
+Query Parameter:
+-cursor: string (Optional, Pagination cursor)
+-limit: integer (Optional, Number of tweets to retrieve)
+
+Repsonse: 200 OK
+Content: Array of tweet objects
+
+Error Message:
+-404 BAD REQUEST
+Content: Error Message indicating invalid request parameters.
+
+-404 NOT FOUND
+Content: Error Message indicating timeline not found.
+
+Description: Retrieves tweets from the timeline of the specified user.
+
+Data Models
+
+- User
+  Properties:
+  - _id: string (User ID)
+  - username: string (Username)
+  - createdAt: string (Date of creation)
+  - updatedAt: string (Date of last update)
+ 
+- Token
+  Properties:
+  -token: string (Authentication token)
+
+- Tweet
+  Properties:
+  - _id: string (Tweet ID)
+   - text: string (Tweet content)
+   - createdAt: string (Date of creation)
+     
+  - user:
+   - _id: string (User ID of Tweet creator)
+   - username: string (Username of tweet creator)
+ 
+This README.md file provides a concise overview of the Healthflex Twitter Backend API, detailing endpoints, request/response formats, authentication requirements, and data models used in the API.
